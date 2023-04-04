@@ -94,9 +94,6 @@ module.exports = function (app) {
           }
 
           let { _id, title, comments } = book;
-          if (!comments) {
-            return response.send("missing required field comment");
-          }
           response.json({ _id, title, comments });
         }
       });
@@ -105,6 +102,9 @@ module.exports = function (app) {
     .post((request, response) => {
       var bookid = request.params.id;
       var comment = request.body.comment;
+      if (!comment) {
+        return response.send("missing required field comment");
+      }
       //json res format same as .get
       Book.findOneAndUpdate(
         { _id: bookid },
