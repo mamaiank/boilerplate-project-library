@@ -194,7 +194,6 @@ suite("Functional Tests", function () {
           .end(function (err, response) {
             assert.equal(response.status, 200);
             assert.equal(response.text, "no book exists");
-            chai.request(server).get("/");
             done();
           });
       });
@@ -208,6 +207,7 @@ suite("Functional Tests", function () {
           .end(function (error, response) {
             assert.equal(response.status, 200);
             assert.equal(response.text, "complete delete successful");
+            chai.request(server).get("/");
             done();
           });
       });
