@@ -141,6 +141,7 @@ suite("Functional Tests", function () {
               assert.equal(response.status, 200);
               assert.equal(response.body.title, "POST book");
               assert.isAtLeast(response.body.comments.length, 1);
+              chai.request(server).get("/");
               done();
             });
         });
