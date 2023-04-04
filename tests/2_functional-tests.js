@@ -67,7 +67,7 @@ suite("Functional Tests", function () {
               assert.equal(response.status, 200);
               assert.equal(
                 response.text,
-                "title required",
+                "missing required field title",
                 "book cannot be created without a title"
               );
               done();

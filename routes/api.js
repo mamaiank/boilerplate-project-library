@@ -50,7 +50,7 @@ module.exports = function (app) {
     .post((request, response) => {
       var title = request.body.title;
       if (!title) {
-        return response.send("title required");
+        return response.send("missing required field title");
       }
 
       const book = new Book({ title });
@@ -94,6 +94,9 @@ module.exports = function (app) {
           }
 
           let { _id, title, comments } = book;
+          if (!comments) {
+            return response.send("missing required field comment");
+          }
           response.json({ _id, title, comments });
         }
       });
